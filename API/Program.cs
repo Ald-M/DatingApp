@@ -40,6 +40,7 @@ using API.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -78,6 +79,7 @@ app.UseSwaggerUI(c =>
     c.RoutePrefix = string.Empty; // serve UI at app root (change or remove if undesired)
 });
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200","https://localhost:4200"));
 
 app.UseAuthentication();
