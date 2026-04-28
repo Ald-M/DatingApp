@@ -21,6 +21,9 @@ public class Member
     [JsonIgnore]
     public List<Photo> Photos { get; set; } = [];
 
+    public List<MemberLike> LikedByMembers { get; set; } = [];
+    public List<MemberLike> LikedMembers { get; set; } = [];
+
     [JsonIgnore]
     [ForeignKey(nameof(Id))]
     public AppUser User { get; set; } = null!;
